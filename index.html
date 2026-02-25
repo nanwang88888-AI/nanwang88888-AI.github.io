@@ -1,436 +1,956 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dr. Nan Wang — Associate Professor, WPU</title>
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
-  <style>
-    :root {
-      --bg:#faf8f5;--card:#fff8f2;--green:#1a1a1a;--mid-green:#e8621a;
-      --lt-green:#fde8d5;--grey:#f0ece8;--text:#1a1a1a;--muted:#7a6255;
-      --border:rgba(232,98,26,0.18);--shadow:0 4px 28px rgba(232,98,26,0.12);
-    }
-    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-    html{scroll-behavior:smooth;}
-    body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden;}
-    body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");opacity:0.5;}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nan Wang, Ph.D. — Associate Professor</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Mono:wght@300;400;500&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1410;
+    --cream: #f5f0e8;
+    --warm-white: #faf8f4;
+    --rust: #b84c2e;
+    --slate: #4a5568;
+    --gold: #c9975a;
+    --muted: #8a7f72;
+    --border: #e0d9ce;
+  }
 
-    nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;
-      padding:1rem 4rem;background:rgba(250,248,245,0.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);}
-    nav::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#1a1a1a 0%,#e8621a 50%,#1a1a1a 100%);}
-    .nav-brand{font-family:'Lora',serif;font-size:1.1rem;color:var(--green);text-decoration:none;}
-    nav ul{list-style:none;display:flex;gap:1.8rem;}
-    nav a{text-decoration:none;color:var(--muted);font-size:.87rem;letter-spacing:.04em;transition:color .3s;}
-    nav a:hover{color:var(--mid-green);}
-    .nav-cta{background:var(--green)!important;color:#fff!important;padding:.4rem 1.1rem;border-radius:999px;}
-    .nav-cta:hover{background:var(--mid-green)!important;}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    section{padding:6rem 4rem;position:relative;z-index:1;}
-    .section-tag{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.22em;color:var(--mid-green);text-transform:uppercase;display:block;margin-bottom:.6rem;}
-    .section-title{font-family:'Lora',serif;font-size:clamp(1.9rem,3.5vw,2.8rem);color:var(--green);line-height:1.15;margin-bottom:2.5rem;}
-    .section-title em{font-style:italic;color:var(--mid-green);}
-    .alt-bg{background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+  html { scroll-behavior: smooth; }
 
-    /* HERO */
-    .hero{min-height:100vh;display:flex;align-items:center;padding:8rem 4rem 4rem;overflow:hidden;background:#1a1a1a;}
-    .blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.22;animation:fl 9s ease-in-out infinite;}
-    .b1{width:520px;height:520px;background:#e8621a;top:-120px;right:-100px;}
-    .b2{width:340px;height:340px;background:#c04a08;bottom:0;left:5%;animation-delay:-4s;}
-    @keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-22px)}}
-    .hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 220px;gap:4rem;align-items:center;max-width:1100px;width:100%;}
-    .eyebrow{font-family:'DM Mono',monospace;font-size:.74rem;letter-spacing:.18em;color:#e8621a;text-transform:uppercase;margin-bottom:1.2rem;display:flex;align-items:center;gap:.6rem;}
-    .eyebrow::before{content:'';display:block;width:28px;height:1.5px;background:#e8621a;}
-    .hero h1{font-family:'Lora',serif;font-size:clamp(2.8rem,5.5vw,4.8rem);line-height:1.05;color:#fff;margin-bottom:1rem;}
-    .hero h1 em{font-style:italic;color:#e8621a;display:block;}
-    .hero-role{font-size:1.08rem;color:#c8b8a8;margin-bottom:.4rem;}
-    .hero-inst{font-family:'Lora',serif;font-size:1rem;color:#e8a070;margin-bottom:1.8rem;font-style:italic;}
-    .tags{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:1.8rem;}
-    .tag{background:rgba(232,98,26,0.15);color:#f0a070;padding:.25rem .8rem;border-radius:999px;font-size:.77rem;border:1px solid rgba(232,98,26,0.3);}
-    .tag.g{background:var(--grey);color:#3a2a1a;}
-    .actions{display:flex;gap:.8rem;flex-wrap:wrap;}
-    .btn{padding:.75rem 1.7rem;border-radius:999px;text-decoration:none;font-size:.92rem;border:none;cursor:pointer;display:inline-block;transition:all .3s;}
-    .btn-p{background:#e8621a;color:#fff;}
-    .btn-p:hover{background:#c04a08;transform:translateY(-2px);}
-    .btn-o{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,0.35);}
-    .btn-o:hover{background:rgba(255,255,255,0.1);}
-    .stat-box{background:rgba(255,255,255,0.06);border:1px solid rgba(232,98,26,0.3);border-radius:22px;padding:1.8rem 1.4rem;box-shadow:0 4px 28px rgba(0,0,0,0.3);display:flex;flex-direction:column;gap:1rem;backdrop-filter:blur(8px);}
-    .stat-item{text-align:center;}
-    .stat-n{font-family:'Lora',serif;font-size:2rem;color:#e8621a;display:block;line-height:1;}
-    .stat-l{font-size:.72rem;color:#a09080;letter-spacing:.06em;text-transform:uppercase;margin-top:.15rem;}
-    .sdiv{height:1px;background:rgba(232,98,26,0.2);}
+  body {
+    font-family: 'Crimson Pro', Georgia, serif;
+    background: var(--warm-white);
+    color: var(--ink);
+    font-size: 18px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
 
-    /* ABOUT */
-    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:4.5rem;align-items:start;max-width:1100px;}
-    .edu-list{display:flex;flex-direction:column;gap:1rem;}
-    .edu-item{background:var(--bg);border:1px solid var(--border);border-radius:13px;padding:1.1rem 1.4rem;display:flex;gap:1rem;align-items:flex-start;transition:transform .3s,border-color .3s;}
-    .edu-item:hover{transform:translateX(5px);border-color:var(--mid-green);}
-    .edu-icon{width:38px;height:38px;border-radius:9px;background:var(--lt-green);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
-    .edu-deg{font-weight:500;color:var(--green);font-size:.93rem;margin-bottom:.18rem;}
-    .edu-inst{font-size:.85rem;color:var(--muted);}
-    .edu-yr{margin-left:auto;flex-shrink:0;font-family:'DM Mono',monospace;font-size:.72rem;color:var(--mid-green);background:var(--lt-green);padding:.18rem .55rem;border-radius:999px;}
-    .about-text p{font-size:1.02rem;line-height:1.85;color:var(--muted);margin-bottom:1rem;}
-    .about-text strong{color:var(--green);font-weight:500;}
-    .r-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.8rem;}
-    .r-tag{background:var(--bg);border:1px solid var(--border);color:var(--green);padding:.22rem .7rem;border-radius:999px;font-size:.76rem;}
+  /* ── HEADER ── */
+  header {
+    position: relative;
+    background: var(--ink);
+    color: var(--cream);
+    padding: 80px 0 60px;
+    overflow: hidden;
+  }
 
-    /* EXPERIENCE */
-    .exp-list{max-width:840px;display:flex;flex-direction:column;}
-    .exp-item{display:grid;grid-template-columns:130px 1fr;gap:0 2rem;padding:1.6rem 0;border-bottom:1px solid var(--border);position:relative;}
-    .exp-item:last-child{border-bottom:none;}
-    .exp-yr{font-family:'DM Mono',monospace;font-size:.77rem;color:var(--mid-green);padding-top:.15rem;line-height:1.5;}
-    .exp-dot{position:absolute;left:124px;top:1.95rem;width:9px;height:9px;border-radius:50%;background:var(--mid-green);border:2px solid var(--bg);}
-    .exp-line{position:absolute;left:128px;top:2.35rem;bottom:0;width:2px;background:var(--border);}
-    .exp-item:last-child .exp-line{display:none;}
-    .exp-title{font-weight:500;color:var(--green);font-size:.97rem;margin-bottom:.25rem;}
-    .exp-place{font-size:.87rem;color:var(--muted);}
+  header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -80px;
+    width: 480px; height: 480px;
+    background: radial-gradient(circle, rgba(201,151,90,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
 
-    /* PUBLICATIONS */
-    .pub-tabs{display:flex;gap:.5rem;margin-bottom:2rem;flex-wrap:wrap;}
-    .pub-tab{padding:.42rem 1.15rem;border-radius:999px;cursor:pointer;font-size:.86rem;border:1.5px solid var(--border);background:transparent;color:var(--muted);transition:all .3s;font-family:'DM Sans',sans-serif;}
-    .pub-tab.active,.pub-tab:hover{background:var(--green);color:#fff;border-color:var(--green);}
-    .pub-panel{display:none;}
-    .pub-panel.active{display:flex;flex-direction:column;gap:.9rem;max-width:900px;}
-    .pub-card{background:var(--card);border:1px solid var(--border);border-radius:13px;padding:1.3rem 1.5rem;display:flex;gap:1.1rem;align-items:flex-start;transition:transform .3s,box-shadow .3s;}
-    .pub-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);}
-    .pub-num{font-family:'DM Mono',monospace;font-size:.75rem;color:var(--mid-green);background:var(--lt-green);padding:.22rem .55rem;border-radius:7px;flex-shrink:0;margin-top:.1rem;}
-    .pub-title{font-family:'Lora',serif;font-size:.94rem;color:var(--green);margin-bottom:.3rem;font-style:italic;line-height:1.4;}
-    .pub-authors{font-size:.82rem;color:var(--muted);margin-bottom:.25rem;line-height:1.45;}
-    .pub-journal{font-size:.79rem;color:var(--mid-green);font-weight:500;}
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--rust), var(--gold), var(--rust));
+  }
 
-    /* GRANTS */
-    .grants-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1.1rem;max-width:1100px;}
-    .grant-card{background:var(--card);border:1px solid var(--border);border-radius:15px;padding:1.4rem;transition:transform .3s,box-shadow .3s;}
-    .grant-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);}
-    .gbadge{display:inline-block;font-size:.7rem;font-family:'DM Mono',monospace;padding:.18rem .65rem;border-radius:999px;margin-bottom:.75rem;letter-spacing:.05em;}
-    .funded{background:#fde8d5;color:#c04a08;}
-    .submitted{background:#fff3cd;color:#856404;}
-    .pending{background:#e8e8e8;color:#333;}
-    .grant-title{font-family:'Lora',serif;font-size:.93rem;color:var(--green);margin-bottom:.45rem;line-height:1.4;}
-    .grant-meta{font-size:.8rem;color:var(--muted);}
-    .grant-amt{font-family:'DM Mono',monospace;color:var(--mid-green);}
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 48px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    align-items: end;
+  }
 
-    /* TEACHING */
-    .course-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:.9rem;max-width:1100px;}
-    .c-card{background:var(--card);border:1px solid var(--border);border-radius:11px;padding:.9rem 1.1rem;display:flex;align-items:center;gap:.75rem;transition:transform .25s,border-color .25s;}
-    .c-card:hover{transform:translateX(4px);border-color:var(--mid-green);}
-    .c-code{font-family:'DM Mono',monospace;font-size:.75rem;background:var(--green);color:#fff;padding:.22rem .6rem;border-radius:7px;flex-shrink:0;}
-    .c-name{font-size:.87rem;color:var(--green);flex:1;line-height:1.3;}
-    .c-period{font-size:.72rem;color:var(--muted);}
+  .header-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.1s;
+  }
 
-    /* SERVICE */
-    .svc-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;max-width:1100px;}
-    .svc-col{background:var(--card);border:1px solid var(--border);border-radius:15px;padding:1.4rem;}
-    .svc-col h3{font-family:'Lora',serif;font-size:.97rem;color:var(--green);margin-bottom:.9rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
-    .svc-col ul{list-style:none;display:flex;flex-direction:column;gap:.55rem;}
-    .svc-col li{font-size:.85rem;color:var(--muted);line-height:1.5;padding-left:.9rem;position:relative;}
-    .svc-col li::before{content:'→';position:absolute;left:0;color:var(--mid-green);font-size:.78rem;}
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 6vw, 76px);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: #fff;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.2s;
+  }
 
-    /* CONTACT */
-    .contact-inner{max-width:520px;}
-    .contact-inner p{font-size:1rem;color:var(--muted);line-height:1.8;margin-bottom:1.8rem;}
-    .c-links{display:flex;flex-direction:column;gap:.75rem;}
-    .c-link{display:flex;align-items:center;gap:.9rem;text-decoration:none;color:var(--green);font-size:.92rem;padding:.85rem 1.2rem;background:var(--card);border:1px solid var(--border);border-radius:11px;transition:all .3s;}
-    .c-link:hover{background:var(--lt-green);transform:translateX(5px);}
-    .c-icon{width:32px;height:32px;border-radius:8px;background:var(--lt-green);display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;}
-    .c-lbl{font-size:.72rem;color:var(--muted);display:block;}
+  h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
 
-    footer{text-align:center;padding:2rem 4rem;background:#1a1a1a;border-top:3px solid #e8621a;font-size:.83rem;color:#b0a090;}
-    footer span{color:#e8621a;}
+  .header-subtitle {
+    font-family: 'Crimson Pro', serif;
+    font-size: 20px;
+    font-weight: 300;
+    color: rgba(245,240,232,0.75);
+    margin-top: 12px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.35s;
+  }
 
-    .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease;}
-    .reveal.visible{opacity:1;transform:none;}
+  .header-meta {
+    text-align: right;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.5s;
+  }
 
-    @media(max-width:900px){
-      nav{padding:1rem 1.5rem;}nav ul{gap:1rem;}
-      section{padding:4rem 1.5rem;}
-      .hero{padding:7rem 1.5rem 3rem;}
-      .hero-inner,.two-col,.svc-cols{grid-template-columns:1fr;}
-      .stat-box{flex-direction:row;flex-wrap:wrap;justify-content:center;}
-      .exp-item{grid-template-columns:1fr;}
-      .exp-dot,.exp-line{display:none;}
-      footer{padding:2rem 1.5rem;}
-    }
-  </style>
+  .header-meta p {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: rgba(245,240,232,0.5);
+    letter-spacing: 0.05em;
+    line-height: 2;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--ink);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 0 48px;
+  }
+
+  nav ul {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    list-style: none;
+    gap: 0;
+  }
+
+  nav a {
+    display: block;
+    padding: 16px 20px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.5);
+    text-decoration: none;
+    transition: color 0.2s;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+  }
+
+  nav a:hover { color: var(--gold); border-color: var(--gold); }
+
+  /* ── MAIN LAYOUT ── */
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+
+  section {
+    padding: 80px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  section:last-child { border-bottom: none; }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 8px;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 40px;
+  }
+
+  h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  /* ── ABOUT ── */
+  #about .about-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .about-text p {
+    font-size: 20px;
+    color: var(--slate);
+    margin-bottom: 20px;
+    font-weight: 300;
+  }
+
+  .about-text strong { color: var(--ink); font-weight: 600; }
+
+  .about-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .stat-card {
+    background: var(--cream);
+    border-left: 3px solid var(--rust);
+    padding: 20px 24px;
+  }
+
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 44px;
+    font-weight: 900;
+    line-height: 1;
+    color: var(--ink);
+  }
+
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  /* ── RESEARCH ── */
+  .research-areas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-bottom: 48px;
+  }
+
+  .area-card {
+    background: var(--cream);
+    padding: 28px;
+    transition: background 0.25s;
+  }
+
+  .area-card:hover { background: var(--ink); color: var(--cream); }
+
+  .area-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .area-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .area-card p {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .area-card:hover p { color: rgba(245,240,232,0.65); }
+
+  /* ── EXPERIENCE ── */
+  .timeline { position: relative; }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 8px; bottom: 0;
+    width: 1px;
+    background: var(--border);
+  }
+
+  .tl-item {
+    padding-left: 36px;
+    padding-bottom: 40px;
+    position: relative;
+    opacity: 0;
+    animation: fadeUp 0.5s ease forwards;
+  }
+
+  .tl-item:nth-child(1) { animation-delay: 0.1s; }
+  .tl-item:nth-child(2) { animation-delay: 0.2s; }
+  .tl-item:nth-child(3) { animation-delay: 0.3s; }
+  .tl-item:nth-child(4) { animation-delay: 0.4s; }
+  .tl-item:nth-child(5) { animation-delay: 0.5s; }
+
+  .tl-dot {
+    position: absolute;
+    left: -5px; top: 8px;
+    width: 11px; height: 11px;
+    border-radius: 50%;
+    background: var(--rust);
+    border: 2px solid var(--warm-white);
+  }
+
+  .tl-years {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--rust);
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+  }
+
+  .tl-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .tl-org {
+    font-size: 16px;
+    color: var(--muted);
+    font-style: italic;
+    margin-top: 2px;
+  }
+
+  /* ── PUBLICATIONS ── */
+  .pub-tabs {
+    display: flex;
+    gap: 2px;
+    margin-bottom: 32px;
+  }
+
+  .tab-btn {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    background: var(--cream);
+    border: none;
+    cursor: pointer;
+    color: var(--muted);
+    transition: all 0.2s;
+  }
+
+  .tab-btn.active, .tab-btn:hover {
+    background: var(--ink);
+    color: var(--cream);
+  }
+
+  .pub-list { display: none; }
+  .pub-list.active { display: block; }
+
+  .pub-item {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 16px;
+    align-items: start;
+  }
+
+  .pub-item:last-child { border-bottom: none; }
+
+  .pub-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--rust);
+    padding-top: 3px;
+  }
+
+  .pub-text {
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--slate);
+  }
+
+  .pub-text strong { color: var(--ink); }
+
+  .pub-venue {
+    font-style: italic;
+    color: var(--muted);
+  }
+
+  /* ── GRANTS ── */
+  .grant-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .grant-card {
+    background: var(--cream);
+    padding: 24px;
+    border-top: 3px solid var(--gold);
+    transition: transform 0.2s;
+  }
+
+  .grant-card:hover { transform: translateY(-3px); }
+
+  .grant-amount {
+    font-family: 'DM Mono', monospace;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--rust);
+    margin-bottom: 8px;
+  }
+
+  .grant-title {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 6px;
+  }
+
+  .grant-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── BOOKS ── */
+  .book-shelf {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .book-card {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 32px 28px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .book-card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 6px;
+    height: 100%;
+    background: var(--rust);
+  }
+
+  .book-icon {
+    font-size: 32px;
+    margin-bottom: 16px;
+  }
+
+  .book-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 10px;
+  }
+
+  .book-card p {
+    font-size: 14px;
+    color: rgba(245,240,232,0.6);
+    line-height: 1.5;
+  }
+
+  .book-status {
+    display: inline-block;
+    margin-top: 16px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    background: rgba(201,151,90,0.2);
+    color: var(--gold);
+    border: 1px solid rgba(201,151,90,0.4);
+  }
+
+  /* ── EDUCATION ── */
+  .edu-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+  }
+
+  .edu-card {
+    background: var(--cream);
+    padding: 32px;
+  }
+
+  .edu-degree {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .edu-school {
+    font-size: 16px;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  .edu-year {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--rust);
+    margin-top: 8px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    color: rgba(245,240,232,0.5);
+    text-align: center;
+    padding: 40px;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+  }
+
+  footer span { color: var(--gold); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .header-inner { grid-template-columns: 1fr; }
+    .header-meta { text-align: left; }
+    main { padding: 0 24px; }
+    nav { padding: 0 24px; }
+    #about .about-grid { grid-template-columns: 1fr; }
+    .research-areas { grid-template-columns: 1fr; }
+    .grant-grid { grid-template-columns: 1fr; }
+    .book-shelf { grid-template-columns: 1fr; }
+    .edu-grid { grid-template-columns: 1fr; }
+  }
+</style>
 </head>
 <body>
 
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div>
+      <div class="header-tag">Portfolio — Academic &amp; Research</div>
+      <h1>Nan <em>Wang,</em><br>Ph.D.</h1>
+      <p class="header-subtitle">Associate Professor in Computer Science · William Paterson University</p>
+    </div>
+    <div class="header-meta">
+      <p>Wayne, NJ 07305</p>
+      <p>Computer Science</p>
+      <p>William Paterson University</p>
+      <p style="color:rgba(201,151,90,0.7); margin-top:8px;">2023 – Present</p>
+    </div>
+  </div>
+</header>
+
+<!-- NAV -->
 <nav>
-  <a href="#home" class="nav-brand">Dr. Nan Wang</a>
   <ul>
     <li><a href="#about">About</a></li>
+    <li><a href="#research">Research</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#publications">Publications</a></li>
     <li><a href="#grants">Grants</a></li>
+    <li><a href="#books">Books</a></li>
     <li><a href="#teaching">Teaching</a></li>
-    <li><a href="#contact" class="nav-cta">Contact</a></li>
+    <li><a href="#education">Education</a></li>
   </ul>
 </nav>
 
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="blob b1"></div><div class="blob b2"></div>
-  <div class="hero-inner">
-    <div>
-      <div class="eyebrow">Academic Portfolio · William Paterson University</div>
-      <h1>Dr. Nan<em>Wang</em></h1>
-      <div class="hero-role">Associate Professor of Computer Science</div>
-      <div class="hero-role" style="color:#e8a070;font-size:.97rem;margin-top:.15rem;">🎓 Graduate Program Director, M.S. in Computer Science</div>
-      <div class="hero-inst">William Paterson University, Wayne, NJ · 2023–Present</div>
-      <div class="tags">
-        <span class="tag">🧬 Computational Biology</span>
-        <span class="tag">🤖 Generative AI</span>
-        <span class="tag">🔗 Blockchain</span>
-        <span class="tag g">📊 Data Science</span>
-        <span class="tag g">🧠 Machine Learning</span>
-        <span class="tag g">🔬 Bioinformatics</span>
-      </div>
-      <div class="actions">
-        <a href="#publications" class="btn btn-p">View Publications</a>
-        <a href="#contact" class="btn btn-o">Get in Touch</a>
-        <a href="https://www.wpunj.edu/cosh/departments/computer-science/ms-computer-science" target="_blank" class="btn" style="background:#fff;color:#e8621a;border:1.5px solid #e8621a;font-weight:500;">🎓 Apply to M.S. Program</a>
-      </div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-item"><span class="stat-n">28</span><div class="stat-l">Journal Papers</div></div>
-      <div class="sdiv"></div>
-      <div class="stat-item"><span class="stat-n">$2.7M+</span><div class="stat-l">Research Funding</div></div>
-      <div class="sdiv"></div>
-      <div class="stat-item"><span class="stat-n">25+</span><div class="stat-l">Years Teaching</div></div>
-      <div class="sdiv"></div>
-      <div class="stat-item"><span class="stat-n">3</span><div class="stat-l">Books In Progress</div></div>
-    </div>
-  </div>
-</section>
+<main>
 
-<!-- ABOUT -->
-<section id="about" class="alt-bg">
-  <div class="two-col">
-    <div class="reveal">
-      <span class="section-tag">Education</span>
-      <h2 class="section-title">Academic <em>Background</em></h2>
-      <div class="edu-list">
-        <div class="edu-item"><div class="edu-icon">🎓</div><div><div class="edu-deg">Ph.D. in Computer Science</div><div class="edu-inst">Mississippi State University</div></div><div class="edu-yr">2009</div></div>
-        <div class="edu-item"><div class="edu-icon">📘</div><div><div class="edu-deg">M.S. in Computer Engineering</div><div class="edu-inst">Mississippi State University</div></div><div class="edu-yr">2005</div></div>
-
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-label">Introduction</div>
+    <h2>About</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Dr. Nan Wang is an <strong>Associate Professor of Computer Science</strong> at William Paterson University with over two decades of academic and research experience spanning computational biology, bioinformatics, machine learning, blockchain technology, and generative AI.</p>
+        <p>Her interdisciplinary work bridges <strong>data science and life sciences</strong>, with publications in leading venues including Nature Scientific Reports, BMC Genomics, and Nucleic Acids Research. She is passionate about developing the next generation of computer scientists through innovative curriculum design and mentorship.</p>
+        <p>Dr. Wang has secured over <strong>$22 million in funded research grants</strong> from agencies including NSF, USDA, NOAA, and USAID, and has recently co-authored a textbook on Blockchain with a Python programming book in preparation.</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="stat-number">20+</div>
+          <div class="stat-label">Years in Academia</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">25+</div>
+          <div class="stat-label">Peer-Reviewed Publications</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">$22M+</div>
+          <div class="stat-label">Funded Research Grants</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">40+</div>
+          <div class="stat-label">Courses Taught</div>
+        </div>
       </div>
     </div>
-    <div class="about-text reveal">
-      <span class="section-tag">Research Focus</span>
-      <h2 class="section-title">What I <em>Research</em></h2>
-      <p>My research spans <strong>computational biology, data science, and emerging technologies</strong>. I develop algorithms and systems for genomic data analysis, structural annotation, and machine learning-based prediction models.</p>
-      <p>Recent work focuses on <strong>Generative AI, Blockchain Technology, and FinTech</strong> — exploring how LLMs and decentralized systems transform scientific discovery and computing.</p>
-      <div class="r-tags">
-        <span class="r-tag">Blockchain & FinTech</span><span class="r-tag">Generative AI & LLMs</span>
-        <span class="r-tag">Computational Biology</span><span class="r-tag">Bioinformatics</span>
-        <span class="r-tag">Data Mining</span><span class="r-tag">Machine Learning</span>
-        <span class="r-tag">Gene Regulatory Networks</span><span class="r-tag">Genomic Annotation</span>
+  </section>
+
+  <!-- RESEARCH -->
+  <section id="research">
+    <div class="section-label">Expertise</div>
+    <h2>Research Areas</h2>
+    <div class="research-areas">
+      <div class="area-card">
+        <span class="area-icon">🧬</span>
+        <h4>Computational Biology &amp; Bioinformatics</h4>
+        <p>Genomic structure inference, gene regulatory networks, transcriptomic analysis, proteogenomics mapping</p>
+      </div>
+      <div class="area-card">
+        <span class="area-icon">🤖</span>
+        <h4>Machine Learning &amp; Data Science</h4>
+        <p>Deep learning, statistical modeling, microarray data analysis, biomarker discovery, imbalanced datasets</p>
+      </div>
+      <div class="area-card">
+        <span class="area-icon">⛓️</span>
+        <h4>Blockchain &amp; FinTech</h4>
+        <p>Decentralized systems, smart contracts, LLM-based self-evolving programs, blockchain for transportation</p>
+      </div>
+      <div class="area-card">
+        <span class="area-icon">💬</span>
+        <h4>Generative AI &amp; NLP</h4>
+        <p>Large language models, natural language processing, AI-powered autonomous systems</p>
+      </div>
+      <div class="area-card">
+        <span class="area-icon">🗄️</span>
+        <h4>Database &amp; Data Mining</h4>
+        <p>Knowledge base construction, biological databases, data modeling, wrapper generation for semi-structured data</p>
+      </div>
+      <div class="area-card">
+        <span class="area-icon">🔬</span>
+        <h4>Functional Genomics</h4>
+        <p>Structural and functional annotation, gene ontology, toxicogenomics, protein function prediction</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- EXPERIENCE -->
-<section id="experience">
-  <span class="section-tag">Career</span>
-  <h2 class="section-title">Professional <em>Experience</em></h2>
-  <div class="exp-list">
-    <div class="exp-item reveal"><div class="exp-yr">2023 – Present</div><div class="exp-dot"></div><div class="exp-line"></div><div><div class="exp-title">Associate Professor</div><div class="exp-place">Dept. of Computer Science · William Paterson University, Wayne, NJ</div></div></div>
-    <div class="exp-item reveal"><div class="exp-yr">2017 – 2023</div><div class="exp-dot"></div><div class="exp-line"></div><div><div class="exp-title">Associate Professor</div><div class="exp-place">Dept. of Computer Science · New Jersey City University, Jersey City, NJ</div></div></div>
-    <div class="exp-item reveal"><div class="exp-yr">2014 – 2017</div><div class="exp-dot"></div><div class="exp-line"></div><div><div class="exp-title">Associate Professor</div><div class="exp-place">School of Computing · University of Southern Mississippi, Hattiesburg, MS</div></div></div>
-    <div class="exp-item reveal"><div class="exp-yr">2008 – 2014</div><div class="exp-dot"></div><div class="exp-line"></div><div><div class="exp-title">Assistant Professor</div><div class="exp-place">School of Computing · University of Southern Mississippi, Hattiesburg, MS</div></div></div>
-    <div class="exp-item reveal"><div class="exp-yr">2005 – 2008</div><div class="exp-dot"></div><div class="exp-line"></div><div><div class="exp-title">Research Associate I</div><div class="exp-place">Dept. of CS & Engineering · Mississippi State University</div></div></div>
-    <div class="exp-item reveal"><div class="exp-yr">2002 – 2005</div><div class="exp-dot"></div><div class="exp-line"></div><div><div class="exp-title">Research Assistant</div><div class="exp-place">Dept. of CS & Engineering · Mississippi State University</div></div></div>
-    <div class="exp-item reveal"><div class="exp-yr">1997 – 2001</div><div class="exp-dot"></div><div class="exp-line"></div><div><div class="exp-title">Engineer</div><div class="exp-place">Wisdom Computer and Communication Company · Xi'an, China</div></div></div>
-  </div>
-</section>
-
-<!-- PUBLICATIONS -->
-<section id="publications" class="alt-bg">
-  <span class="section-tag">Scholarship</span>
-  <h2 class="section-title">Selected <em>Publications</em></h2>
-  <div class="pub-tabs">
-    <button class="pub-tab active" onclick="switchPub('j',this)">📄 Journal Papers</button>
-    <button class="pub-tab" onclick="switchPub('c',this)">🎤 Conference Papers</button>
-    <button class="pub-tab" onclick="switchPub('b',this)">📚 Books</button>
-  </div>
-
-  <div class="pub-panel active" id="pub-j">
-    <div class="pub-card reveal"><div class="pub-num">#1</div><div><div class="pub-title">Inferring Single-Cell 3D Chromosomal Structures Based on the Lennard-Jones Potential</div><div class="pub-authors">Mengsheng Zha, Nan Wang, Chaoyang Zhang, Zheng Wang</div><div class="pub-journal">Int. J. Mol. Sci. · 2021 · DOI: 10.3390/ijms22115914</div></div></div>
-    <div class="pub-card reveal"><div class="pub-num">#2</div><div><div class="pub-title">Structure–activity relationship-based chemical classification of highly imbalanced Tox21 datasets</div><div class="pub-authors">Idakwo G., Thangapandian S., Luttrell J., Nan Wang, Chaoyang Zhang, Ping Gong</div><div class="pub-journal">J Cheminform · 12, 66 · 2020 · DOI: 10.1186/s13321-020-00468-x</div></div></div>
-    <div class="pub-card reveal"><div class="pub-num">#3</div><div><div class="pub-title">Inferring the three-dimensional structures of the X-chromosome during X-inactivation</div><div class="pub-authors">Hao Zhu, Nan Wang, Jonathan Z. Sun, Ras B. Pandey, Zheng Wang</div><div class="pub-journal">Mathematical Biosciences and Engineering · 2019 · DOI: 10.3934/mbe.2019369</div></div></div>
-    <div class="pub-card reveal"><div class="pub-num">#4</div><div><div class="pub-title">TADKB: Family Classification and a knowledge base of topologically associating domains</div><div class="pub-authors">Tong Liu, Jacob Porter, Nan Wang, Zheng Sun, Yin-yuan Mo, Zheng Wang</div><div class="pub-journal">BMC Genomics 20 · 2019</div></div></div>
-    <div class="pub-card reveal"><div class="pub-num">#5</div><div><div class="pub-title">Character Recognition Using Hidden Markov Models</div><div class="pub-authors">Saish Bhende, Kutub Thakur, Jason Teseng, Md Liakat Ali, Nan Wang</div><div class="pub-journal">International Journal of Recent Technology and Engineering (IJRTE) · Vol. 7, Issue 4S2 · 2018</div></div></div>
-    <div class="pub-card reveal"><div class="pub-num">#6</div><div><div class="pub-title">PANDA: Protein function prediction using domain architecture and affinity propagation</div><div class="pub-authors">Zheng Wang, Chenguan Zhao, Yiheng Wang, Zheng Sun, Nan Wang</div><div class="pub-journal">Scientific Reports · 2018 · DOI: 10.1038/s41598-018-21849-1</div></div></div>
-    <div class="pub-card reveal"><div class="pub-num">#7</div><div><div class="pub-title">A comparative study of k-spectrum-based error correction methods for next-generation sequencing data analysis</div><div class="pub-authors">Isaac Akogwu, Nan Wang, Chaoyang Zhang, Ping Gong</div><div class="pub-journal">Human Genomics · 2016 · DOI: 10.1186/s40246-016-0068-0</div></div></div>
-    <div class="pub-card reveal"><div class="pub-num">#8</div><div><div class="pub-title">SeqAssist: A novel toolkit for preliminary analysis of next-generation sequencing data</div><div class="pub-authors">Yan Peng, Andrew S Maxwell, Natalie D Barker, Jennifer G Laird, Alan J Kennedy, Nan Wang, Chaoyang Zhang, Ping Gong</div><div class="pub-journal">BMC Bioinformatics · 2014 · 15(suppl 11): S10</div></div></div>
-    <div class="pub-card reveal"><div class="pub-num">#9</div><div><div class="pub-title">Gene regulatory network inference and validation using relative change ratio analysis and time-delayed dynamic Bayesian network</div><div class="pub-authors">Peng Li, Ping Gong, Haoni Li, Edward J Perkins, Nan Wang, Chaoyang Zhang</div><div class="pub-journal">EURASIP Journal on Bioinformatics and Systems Biology · 2014</div></div></div>
-    <div class="pub-card reveal"><div class="pub-num">#10</div><div><div class="pub-title">Differential reconstructed gene interaction networks for deriving toxicity threshold in chemical risk assessment</div><div class="pub-authors">Yang Y., Maxwell A., Zhang X., Wang N., Perkins E.J., Zhang C.-Y., Gong P.</div><div class="pub-journal">BMC Bioinformatics · 14 (Suppl 13), S3 · 2013</div></div></div>
-    <div class="pub-card reveal"><div class="pub-num">#11</div><div><div class="pub-title">Deciphering chemically-induced reversible neurotoxicity by reconstructing perturbed pathways from time series microarray gene expression data</div><div class="pub-authors">Yang Y., Li S., Maxwell A.S., Barker N.D., et al., Wang N., Perkins E.J., Zhang C.-Y., Gong P.</div><div class="pub-journal">Proceedings of GENSIPS 2013</div></div></div>
-    <div class="pub-card reveal"><div class="pub-num">#12</div><div><div class="pub-title">State Space Model with hidden variables for reconstruction of gene regulatory networks</div><div class="pub-authors">Wu X, Li P, Wang N, Gong P, Perkins EJ, Deng Y, Zhang C.</div><div class="pub-journal">BMC Syst Biol. · 2011 · 5 Suppl 3:S3 · PMID: 22784622</div></div></div>
-    <div class="pub-card reveal"><div class="pub-num">#13</div><div><div class="pub-title">Genome-wide gene expression profiles in lung tissues of pig breeds differing in resistance to porcine reproductive and respiratory syndrome virus</div><div class="pub-authors">Xing J, Xing F, Zhang C, Zhang Y, Wang N</div><div class="pub-journal">PLoS One · 2014 · DOI: 10.1371/journal.pone.0086101 · PMID: 24465897</div></div></div>
-    <div class="pub-card reveal"><div class="pub-num">#14</div><div><div class="pub-title">Learning the structure of gene regulatory networks from time series gene expression data</div><div class="pub-authors">Li H, Wang N, Gong P, Perkins EJ, Zhang C.</div><div class="pub-journal">BMC Genomics · 2011 · 12 Suppl 5:S13 · PMID: 22369588</div></div></div>
-    <div class="pub-card reveal"><div class="pub-num">#15</div><div><div class="pub-title">RefNetBuilder: a platform for construction of integrated reference gene regulatory networks from expressed sequence tags</div><div class="pub-authors">Li Y, Gong P, Perkins EJ, Zhang C, Wang N</div><div class="pub-journal">BMC Bioinformatics · 2011 · 12 Suppl 10:S20 · PMID: 22166047</div></div></div>
-    <div class="pub-card reveal"><div class="pub-num">#16</div><div><div class="pub-title">Biomarker Discovery Using 1-Norm Regularization for Multi-Class Earthworm Microarray Gene Expression Data</div><div class="pub-authors">Xiaofei Nan, Nan Wang, Ping Gong, Chaoyang Zhang, Yixin Chen, Dawn Wilkins</div><div class="pub-journal">Neurocomputing · 2010</div></div></div>
-    <div class="pub-card reveal"><div class="pub-num">#17</div><div><div class="pub-title">Building quantitative prediction models for tissue residue of two explosives compounds in earthworms from microarray gene expression data</div><div class="pub-authors">Gong P, Loh PR, Barker ND, Tucker G, Wang N, Zhang C, Escalon BL, Berger B, Perkins EJ</div><div class="pub-journal">Environ Sci Technol. · 2012 · 46(1):19-26 · PMID: 21776976</div></div></div>
-    <div class="pub-card reveal"><div class="pub-num">#18</div><div><div class="pub-title">Identification and optimization of classifier genes from multi-class earthworm microarray dataset</div><div class="pub-authors">Li Y, Wang N, Perkins EJ, Zhang C, Gong P.</div><div class="pub-journal">PLoS One · 2010 · 5(10):e13715 · PMID: 21060837</div></div></div>
-    <div class="pub-card reveal"><div class="pub-num">#19</div><div><div class="pub-title">The proteogenomic mapping tool</div><div class="pub-authors">Sanders WS, Wang N, Bridges SM, Malone BM, Dandass YS, McCarthy FM, Nanduri B, Lawrence ML, Burgess SC</div><div class="pub-journal">BMC Bioinformatics · 2011 · 12:115 · PMID: 21513508</div></div></div>
-    <div class="pub-card reveal"><div class="pub-num">#20</div><div><div class="pub-title">Gene model detection using mass spectrometry</div><div class="pub-authors">Nanduri B, Wang N, Lawrence ML, Bridges SM, Burgess SC.</div><div class="pub-journal">Methods Mol Biol. · 2010 · 604:137-44 · PMID: 20013369</div></div></div>
-    <div class="pub-card reveal"><div class="pub-num">#21</div><div><div class="pub-title">Gene Ontology annotation quality analysis in model eukaryotes</div><div class="pub-authors">Buza TJ, McCarthy FM, Wang N, Bridges SM, Burgess SC</div><div class="pub-journal">Nucleic Acids Res. · 2008 · 36(2):e12 · PMID: 18187504</div></div></div>
-    <div class="pub-card reveal"><div class="pub-num">#22</div><div><div class="pub-title">ProtQuant: A Tool for the Label-Free Quantification of MudPIT Proteomics Data</div><div class="pub-authors">Bridges SM, Magee GB, Wang N, Williams WP, Burgess SC, Nanduri B</div><div class="pub-journal">BMC Bioinformatics · 2007 · 8(Suppl 7):S24 · PMID: 18047724</div></div></div>
-    <div class="pub-card reveal"><div class="pub-num">#23</div><div><div class="pub-title">AgBase: A unified resource for functional analysis in agriculture</div><div class="pub-authors">McCarthy F., Bridges S., Wang N., Magee B., Williams WP, Luthe DS, Burgess S.</div><div class="pub-journal">Nucleic Acids Research · 2007 · PMID: 17135208</div></div></div>
-    <div class="pub-card reveal"><div class="pub-num">#24</div><div><div class="pub-title">AgBase: A Functional Genomics Resource for Agriculture</div><div class="pub-authors">McCarthy F., Bridges S., Wang N., Magee B., Burgess S.</div><div class="pub-journal">BMC Genomics · 2006 · 7(1):229 · PMID: 16961921</div></div></div>
-    <div class="pub-card reveal"><div class="pub-num">#25</div><div><div class="pub-title">Modeling a Whole Organ Using Proteomics: The Avian Bursa of Fabricius</div><div class="pub-authors">McCarthy F., Cooksey A., Wang N., Bridges S., Pharr T., Burgess S.</div><div class="pub-journal">Proteomics · May 2006 · 6(9):2759-71 · PMID: 16596704</div></div></div>
-    <div class="pub-card reveal"><div class="pub-num">#26</div><div><div class="pub-title">Proteomics applied to disease in poultry</div><div class="pub-authors">Nanduri B., McCarthy FM, Bridges SM, Corzo A., Koter MD, Buza JJ, van Den Berg B., Wang N., Burgess SC.</div><div class="pub-journal">World's Poultry Science Journal · 2006</div></div></div>
-    <div class="pub-card reveal"><div class="pub-num">#27</div><div><div class="pub-title">Automatic Composite Wrapper Generation for Semi-Structured Biological Data Based on Table Structure Identification</div><div class="pub-authors">Liangyou Chen, Hasan M. Jamil, Nan Wang</div><div class="pub-journal">ACM SIGMOD Record · Special Issue · June 2004 · Vol. 33</div></div></div>
-    <div class="pub-card reveal"><div class="pub-num">#28</div><div><div class="pub-title">Automatic Wrapper Generation for Semi-Structured Biological Data Based on Table Structure Identification</div><div class="pub-authors">Liangyou Chen, Hasan Jamil, Nan Wang</div><div class="pub-journal">1st International Workshop on Biological Data Management (BIDM 03) · Prague, Czech Republic · 2003</div></div></div>
-  </div>
-
-  <div class="pub-panel" id="pub-c">
-    <div class="pub-card reveal"><div class="pub-num">C1</div><div><div class="pub-title">Self-Evolving Programs: A Novel Approach Leveraging LLMs and Quine Programs</div><div class="pub-authors">Ali M. Saghiri and Nan Wang</div><div class="pub-journal">ICCIMS 2024 · Royal Military College of Canada & UQO · July 2024</div></div></div>
-    <div class="pub-card reveal"><div class="pub-num">C2</div><div><div class="pub-title">Decentralized Platoon Management Based on Blockchain: A SWOT Analysis Research Perspective</div><div class="pub-authors">Ali M. Saghiri and Nan Wang</div><div class="pub-journal">ICCIMS 2024 · Royal Military College of Canada & UQO · July 2024</div></div></div>
-    <div class="pub-card reveal"><div class="pub-num">C3</div><div><div class="pub-title">Performance Evaluation of the Time-Delayed Dynamic Bayesian Network Approach to Inferring Gene Regulatory Networks from Time Series Microarray Data</div><div class="pub-authors">Haoni Li, Peng Li, Chaoyang Zhang, Nan Wang, Ping Gong, Edward Perkins</div><div class="pub-journal">ACM BCB 2010</div></div></div>
-    <div class="pub-card reveal"><div class="pub-num">C4</div><div><div class="pub-title">ETKB: a knowledgebase for earthworm toxicogenomics</div><div class="pub-authors">Ying Li, Ping Gong, Chaoyang Zhang, Edward J. Perkins, Nan Wang</div><div class="pub-journal">MCBIOS 2010</div></div></div>
-    <div class="pub-card reveal"><div class="pub-num">C5</div><div><div class="pub-title">Discovery of Biomarker Genes from Earthworm Microarray Data by Discriminant Analysis and Clustering</div><div class="pub-authors">Ying Li, Nan Wang, Chaoyang Zhang, Edward J. Perkins, Ping Gong</div><div class="pub-journal">MCBIOS 2010</div></div></div>
-    <div class="pub-card reveal"><div class="pub-num">C6</div><div><div class="pub-title">Proteogenomic Mapping for Structural Annotation of Prokaryote Genomes</div><div class="pub-authors">Nan Wang, Shane Burgess, Mark Lawrence, Susan Bridges</div><div class="pub-journal">International Joint Conference on Bioinformatics, Systems Biology and Intelligent Computing · 2009</div></div></div>
-    <div class="pub-card reveal"><div class="pub-num">C7</div><div><div class="pub-title">Discovery of Biomarker Genes from Earthworm Microarray Data by Discriminant Analysis and Clustering</div><div class="pub-authors">Ying Li, Nan Wang, Edward J. Perkins, Ping Gong</div><div class="pub-journal">International Joint Conference on Bioinformatics, Systems Biology and Intelligent Computing · 2009</div></div></div>
-    <div class="pub-card reveal"><div class="pub-num">C8</div><div><div class="pub-title">Statistics Measurements for Increased Confidence in Target-Decoy Search Strategy</div><div class="pub-authors">Nan Wang, Guangming Yao, Susan Bridges, Chaoyang Zhang</div><div class="pub-journal">MCBIOS 2009 · Starkville, MS · February 2009</div></div></div>
-    <div style="margin-top:1.5rem;margin-bottom:.5rem;font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.18em;color:var(--mid-green);text-transform:uppercase;">Poster / Oral Presentations</div>
-    <div class="pub-card reveal"><div class="pub-num">P1</div><div><div class="pub-title">Self-Evolving Programs: A Novel Approach Leveraging LLMs and Quine Programs</div><div class="pub-authors">Ali M. Saghiri and Nan Wang</div><div class="pub-journal">ICCIMS 2024 · Royal Military College of Canada · July 2024 · Oral Presentation</div></div></div>
-    <div class="pub-card reveal"><div class="pub-num">P2</div><div><div class="pub-title">Decentralized Platoon Management Based on Blockchain: A SWOT Analysis Research Perspective</div><div class="pub-authors">Ali M. Saghiri and Nan Wang</div><div class="pub-journal">ICCIMS 2024 · Royal Military College of Canada · July 2024 · Oral Presentation</div></div></div>
-    <div class="pub-card reveal"><div class="pub-num">P3</div><div><div class="pub-title">Inferring Single-Cell 3D Chromosomal Structures Based on the Lennard-Jones Potential</div><div class="pub-authors">Mengsheng Zha, Nan Wang, Chaoyang Zhang, Zheng Wang</div><div class="pub-journal">14th Annual RECOMB/ISCB RSG-DREAM 2022 · Poster Presentation</div></div></div>
-    <div class="pub-card reveal"><div class="pub-num">P4</div><div><div class="pub-title">miRDisc: A Novel Computational Program for microRNA Discovery from Short Deep Sequencing Reads and Transcriptomic Assembly</div><div class="pub-authors">Yan Peng, Andrew Maxwell, Lijuan Yang, Natalie Barker, Chaoyang Zhang, Nan Wang, Ping Gong</div><div class="pub-journal">MCBIOS 2018 · 15th Annual Conference · March 2018</div></div></div>
-    <div class="pub-card reveal"><div class="pub-num">P5</div><div><div class="pub-title">CECOND: A Novel Cuckoo Filter-Based Error Correction Method for Next Generation Sequencing Data</div><div class="pub-authors">Isaac Akogwu, Nan Wang, Zhaoxian Zhou, Ping Gong, Chaoyang Zhang</div><div class="pub-journal">MCBIOS 2018 · 15th Annual Conference · March 2018</div></div></div>
-    <div class="pub-card reveal"><div class="pub-num">P6</div><div><div class="pub-title">Quantitative Target-specific Toxicity Prediction Model (QTTPM): A Novel Computational Toxicology Approach</div><div class="pub-authors">Sundar Thangapandian, Gabriel Idakwo, Nan Wang, Chaoyang Zhang, Ping Gong</div><div class="pub-journal">MCBIOS 2018 · 15th Annual Conference · March 2018</div></div></div>
-    <div class="pub-card reveal"><div class="pub-num">P7</div><div><div class="pub-title">SMOTEENNBagging: A novel ensemble resampling and learning approach to QSAR modeling with imbalanced data</div><div class="pub-authors">Gabriel Idakwo, Ping Gong, Sundar Thangapandian, Yan Li, Nan Wang, Zhaoxian Zhou, Chaoyang Zhang</div><div class="pub-journal">MCBIOS 2018 · 15th Annual Conference · March 2018</div></div></div>
-    <div class="pub-card reveal"><div class="pub-num">P8</div><div><div class="pub-title">Gene Selection for Earthworm Microarray Data Classification Using 1-norm SVM Feature Selection</div><div class="pub-authors">Xiaofei Nan, Nan Wang, Ping Gong, Chaoyang Zhang, Yixin Chen, Dawn Wilkins</div><div class="pub-journal">7th Annual Biotechnology and Bioinformatics Symposium · Lafayette · October 2010</div></div></div>
-    <div class="pub-card reveal"><div class="pub-num">P9</div><div><div class="pub-title">Gene Selection Using 1-Norm Regularization for Multi-Class Microarray Data</div><div class="pub-authors">Xiaofei Nan, Nan Wang, Ping Gong, Chaoyang Zhang, Yixin Chen, Dawn Wilkins</div><div class="pub-journal">BIBM 2010 · Hong Kong, China · December 2010</div></div></div>
-    <div class="pub-card reveal"><div class="pub-num">P10</div><div><div class="pub-title">Distance-based Outlier Detection Model for Improving MS/MS Peptide Identification Confidence</div><div class="pub-authors">Wang N., Yuan C., Burgess S., Bridges S.</div><div class="pub-journal">MCBIOS 2008 · Oklahoma City, OK · February 2008</div></div></div>
-  </div>
-
-  <div class="pub-panel" id="pub-b">
-    <div class="pub-card reveal"><div class="pub-num">📗</div><div><div class="pub-title">Blockchain for Beginners: A Project-based Approach</div><div class="pub-authors">Saghiri, Ali and Wang, Nan</div><div class="pub-journal">Cogella · In Press · 2024–2025</div></div></div>
-    <div class="pub-card reveal"><div class="pub-num">📘</div><div><div class="pub-title">Python Basics</div><div class="pub-authors">Wang, Nan and Saghiri, Ali</div><div class="pub-journal">Amazon · In Preparation · 2025</div></div></div>
-    <div class="pub-card reveal"><div class="pub-num">📙</div><div><div class="pub-title">Principles of Calculus: A Python-Based Framework</div><div class="pub-authors">Wang, Nan; Saghiri, Ali</div><div class="pub-journal">Cengage · In Preparation · 2025</div></div></div>
-    <div class="pub-card reveal"><div class="pub-num">📕</div><div><div class="pub-title">Gene Model Detection Using Mass Spectrometry</div><div class="pub-authors">Wang N*, Nanduri B*, Lawrence ML, Bridges SM, Burgess SC</div><div class="pub-journal">Method in Molecular Biology: Proteome Bioinformatics · Vol. 604 · 2008</div></div></div>
-  </div>
-</section>
-
-<!-- GRANTS -->
-<section id="grants">
-  <span class="section-tag">Funding</span>
-  <h2 class="section-title">Research <em>Grants</em></h2>
-  <div class="grants-grid">
-    <div class="grant-card reveal"><span class="gbadge funded">Funded ✓</span><div class="grant-title">S-STEM: MaCS Scholars Program, Phase II</div><div class="grant-meta">NSF · Co-PI · 2026–2032 · <span class="grant-amt">$2,000,000</span></div></div>
-    <div class="grant-card reveal"><span class="gbadge submitted">Submitted</span><div class="grant-title">Automated Reasoning and Self-Referential Quine Programs in Smart Contracts</div><div class="grant-meta">Amazon Research · Co-PI · 2024</div></div>
-    <div class="grant-card reveal"><span class="gbadge funded">Funded ✓</span><div class="grant-title">Math and Computer Science Scholars Program</div><div class="grant-meta">NSF · Co-PI · 2020–2025 · <span class="grant-amt">$1,000,000</span></div></div>
-    <div class="grant-card reveal"><span class="gbadge funded">Funded ✓</span><div class="grant-title">Modeling and Simulation of Complex Systems</div><div class="grant-meta">NSF · Senior Personnel · 2009–2014 · <span class="grant-amt">$20,000,000</span></div></div>
-    <div class="grant-card reveal"><span class="gbadge funded">Funded ✓</span><div class="grant-title">Bayesian Learning for Microarray Data Analysis and Gene Regulatory Network Reconstruction</div><div class="grant-meta">U.S. Army ERDC · Co-PI · 2008–2010 · <span class="grant-amt">$439,608</span></div></div>
-    <div class="grant-card reveal"><span class="gbadge funded">Funded ✓</span><div class="grant-title">Toxic Dinoflagellate Bloom Initiation and Persistence in the Gulf of Mexico</div><div class="grant-meta">NOAA · Co-PI · 2011–2014 · <span class="grant-amt">$718,268</span></div></div>
-    <div class="grant-card reveal"><span class="gbadge funded">Funded ✓</span><div class="grant-title">Modeling, Reconstruction, and Validation of Gene Regulatory Networks</div><div class="grant-meta">NSF · Co-PI · 2011–2015 · <span class="grant-amt">$458,433</span></div></div>
-    <div class="grant-card reveal"><span class="gbadge funded">Funded ✓</span><div class="grant-title">Arthropod Functional Genomics Initiative for Animal Health</div><div class="grant-meta">USAID · Co-PI · 2010–2013 · <span class="grant-amt">$391,894</span></div></div>
-    <div class="grant-card reveal"><span class="gbadge funded">Funded ✓</span><div class="grant-title">Cyber-based Platform for Building Gene Regulatory Networks from ESTs</div><div class="grant-meta">NSF · PI · 2014–2016 · <span class="grant-amt">$72,000</span></div></div>
-    <div class="grant-card reveal"><span class="gbadge funded">Funded ✓</span><div class="grant-title">Combined Computational Chemistry and Biology Modeling for Protein Interactions</div><div class="grant-meta">NSF · PI · 2011 · <span class="grant-amt">$30,787</span></div></div>
-  </div>
-</section>
-
-<!-- TEACHING -->
-<section id="teaching" class="alt-bg">
-  <span class="section-tag">Classroom</span>
-  <h2 class="section-title">Courses <em>Taught</em></h2>
-  <p style="color:var(--muted);margin-bottom:1.8rem;font-size:.97rem;max-width:640px;line-height:1.7;">Current courses at William Paterson University (2023–Present), including newly developed graduate-level offerings.</p>
-  <div class="course-grid">
-    <div class="c-card reveal"><div class="c-code">CS2010</div><div><div class="c-name">Computer Information Technology</div><div class="c-period">Undergrad · WPU</div></div></div>
-    <div class="c-card reveal"><div class="c-code">CS2300</div><div><div class="c-name">Computer Science I in C++</div><div class="c-period">Undergrad · WPU</div></div></div>
-    <div class="c-card reveal"><div class="c-code">CS2400</div><div><div class="c-name">Computer Science II in C++</div><div class="c-period">Undergrad · WPU</div></div></div>
-    <div class="c-card reveal"><div class="c-code">CS2421</div><div><div class="c-name">Computer Science II in Java</div><div class="c-period">Undergrad · WPU</div></div></div>
-    <div class="c-card reveal"><div class="c-code">CS2350</div><div><div class="c-name">Computer Hardware</div><div class="c-period">Undergrad · WPU</div></div></div>
-    <div class="c-card reveal"><div class="c-code">CS2352</div><div><div class="c-name">Applied Operating System</div><div class="c-period">Undergrad · WPU</div></div></div>
-    <div class="c-card reveal"><div class="c-code">CS3550</div><div><div class="c-name">Database Management</div><div class="c-period">Undergrad · WPU</div></div></div>
-    <div class="c-card reveal"><div class="c-code">CS3660</div><div><div class="c-name">Information Assurance</div><div class="c-period">Undergrad · WPU</div></div></div>
-    <div class="c-card reveal"><div class="c-code">CS4800</div><div><div class="c-name">CS Capstone Project</div><div class="c-period">Undergrad · WPU</div></div></div>
-    <div class="c-card reveal"><div class="c-code">CS5600</div><div><div class="c-name">Data Structures and Algorithms</div><div class="c-period">Graduate · New Course</div></div></div>
-    <div class="c-card reveal"><div class="c-code">CS6600</div><div><div class="c-name">Advanced Algorithms</div><div class="c-period">Graduate · New Course</div></div></div>
-    <div class="c-card reveal"><div class="c-code">CS6030</div><div><div class="c-name">Natural Language Processing</div><div class="c-period">Graduate · New Course</div></div></div>
-    <div class="c-card reveal"><div class="c-code">CS6040</div><div><div class="c-name">Deep Learning</div><div class="c-period">Graduate · New Course</div></div></div>
-    <div class="c-card reveal"><div class="c-code">CS6080</div><div><div class="c-name">Introduction to Bioinformatics</div><div class="c-period">Graduate · New Course</div></div></div>
-    <div class="c-card reveal"><div class="c-code">CS6090</div><div><div class="c-name">Advanced Topic in Bioinformatics</div><div class="c-period">Graduate · New Course</div></div></div>
-    <div class="c-card reveal"><div class="c-code">CS6990</div><div><div class="c-name">Master Capstone Project</div><div class="c-period">Graduate · New Course</div></div></div>
-  </div>
-</section>
-
-<!-- SERVICE -->
-<section id="service">
-  <span class="section-tag">Engagement</span>
-  <h2 class="section-title">Service & <em>Leadership</em></h2>
-  <div class="svc-cols">
-    <div class="svc-col reveal">
-      <h3>🏛️ University Level</h3>
-      <ul>
-        <li>Design & development of the M.S. program in CS</li>
-        <li>Coordinating marketing video recordings for CS/IT programs</li>
-        <li>Participation in University Open House Events</li>
-        <li>Development of UCC2 courses CS2400 & CS2421</li>
-      </ul>
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-label">Career</div>
+    <h2>Academic Experience</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-years">2023 – Present</div>
+        <div class="tl-title">Associate Professor</div>
+        <div class="tl-org">Department of Computer Science · William Paterson University, Wayne, NJ</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-years">2017 – 2023</div>
+        <div class="tl-title">Associate Professor</div>
+        <div class="tl-org">Department of Computer Science · New Jersey City University, Jersey City, NJ</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-years">2014 – 2017</div>
+        <div class="tl-title">Associate Professor</div>
+        <div class="tl-org">School of Computing · University of Southern Mississippi, Hattiesburg, MS</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-years">2008 – 2014</div>
+        <div class="tl-title">Assistant Professor</div>
+        <div class="tl-org">School of Computing · University of Southern Mississippi, Hattiesburg, MS</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-years">2005 – 2008</div>
+        <div class="tl-title">Research Associate I</div>
+        <div class="tl-org">Dept. of Computer Science &amp; Engineering · Mississippi State University, Starkville, MS</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-years">2002 – 2005</div>
+        <div class="tl-title">Research Assistant</div>
+        <div class="tl-org">Dept. of Computer Science &amp; Engineering · Mississippi State University, Starkville, MS</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-years">1997 – 2001</div>
+        <div class="tl-title">Engineer</div>
+        <div class="tl-org">Wisdom Computer and Communication Company · Xi'an, China</div>
+      </div>
     </div>
-    <div class="svc-col reveal">
-      <h3>🏫 Department Level</h3>
-      <ul>
-        <li><strong style="color:var(--green);">Graduate Program Director</strong> — M.S. in Computer Science</li>
-        <li>Member — Assessment, Curriculum & Department Committees</li>
-        <li>Member — Faculty Recruitment Committee</li>
-        <li>Faculty mentor — ASPIRE, MaCS, GS-LSAMP</li>
-        <li>Faculty Advisor for student SGA club</li>
-        <li>Building Mac Lab to support CS/IT majors</li>
-      </ul>
-    </div>
-    <div class="svc-col reveal">
-      <h3>🌐 Academic Community</h3>
-      <ul>
-        <li>Reviewer — J. of Supercomputing, BMC Bioinformatics</li>
-        <li>60+ peer-reviewed article reviews</li>
-        <li>Program Chair — HPCTA06 at IMSCCS06, Hangzhou</li>
-        <li>Invited talks at Shandong Univ., Simon Fraser Univ., US Army ERDC, WPU</li>
-        <li>Session Chair, MCBIOS 2010</li>
-      </ul>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- CONTACT -->
-<section id="contact" class="alt-bg">
-  <div class="contact-inner">
-    <span class="section-tag">Get In Touch</span>
-    <h2 class="section-title">Let's <em>Connect</em></h2>
-    <p>I welcome inquiries from prospective graduate students, research collaborators, and colleagues. Feel free to reach out about research opportunities, courses, or potential projects.</p>
-    <div style="background:rgba(232,98,26,0.08);border:1.5px solid rgba(232,98,26,0.3);border-radius:14px;padding:1.2rem 1.5rem;margin-bottom:1.5rem;">
-      <div style="font-family:'Lora',serif;font-size:1rem;color:var(--green);margin-bottom:.4rem;">🎓 Interested in the M.S. in Computer Science?</div>
-      <div style="font-size:.9rem;color:var(--muted);line-height:1.6;margin-bottom:1rem;">As Graduate Program Director, I oversee the M.S. program and welcome applications from motivated students. Learn more and apply below.</div>
-      <a href="https://www.wpunj.edu/cosh/departments/computer-science/ms-computer-science" target="_blank" style="display:inline-block;background:#e8621a;color:#fff;padding:.7rem 1.6rem;border-radius:999px;text-decoration:none;font-size:.92rem;font-weight:500;transition:background .3s;" onmouseover="this.style.background='#c04a08'" onmouseout="this.style.background='#e8621a'">Apply to M.S. Program →</a>
+  <!-- PUBLICATIONS -->
+  <section id="publications">
+    <div class="section-label">Scholarship</div>
+    <h2>Publications</h2>
+    <div class="pub-tabs">
+      <button class="tab-btn active" onclick="showTab('journals')">Journal Articles</button>
+      <button class="tab-btn" onclick="showTab('conferences')">Conference Papers</button>
     </div>
-    <div class="c-links">
-      <a href="/cdn-cgi/l/email-protection#5c2b3d323b326d1c2b2c29323672393829" class="c-link reveal"><div class="c-icon">📧</div><div><span class="c-lbl">Email</span><span class="__cf_email__" data-cfemail="592e38373e3768192e292c3733773c3d2c">[email&#160;protected]</span></div></a>
-      <a href="https://www.wpunj.edu/cos/departments/computer-science/" target="_blank" class="c-link reveal"><div class="c-icon">🏫</div><div><span class="c-lbl">Department</span>Computer Science · William Paterson University</div></a>
-      <a href="https://www.wpunj.edu" target="_blank" class="c-link reveal"><div class="c-icon">🌐</div><div><span class="c-lbl">University</span>William Paterson University, Wayne, NJ 07470</div></a>
-      <a href="https://scholar.google.com" target="_blank" class="c-link reveal"><div class="c-icon">🔬</div><div><span class="c-lbl">Google Scholar</span>View Full Publication List</div></a>
+
+    <div id="journals" class="pub-list active">
+      <div class="pub-item">
+        <div class="pub-num">01</div>
+        <div class="pub-text"><strong>Zha M., Wang N., Zhang C., Wang Z.</strong> Inferring Single-Cell 3D Chromosomal Structures Based on the Lennard-Jones Potential. <span class="pub-venue">Int. J. Mol. Sci., 22(11), 5914, 2021.</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">02</div>
+        <div class="pub-text"><strong>Idakwo G., Thangapandian S., Luttrell J., Wang N., Zhang C., Gong P.</strong> Structure–activity relationship-based chemical classification of highly imbalanced Tox21 datasets. <span class="pub-venue">J Cheminform 12, 66, 2020.</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">03</div>
+        <div class="pub-text"><strong>Zhu H., Wang N., Sun J.Z., Pandey R.B., Wang Z.</strong> Inferring the three-dimensional structures of the X-chromosome during X-inactivation. <span class="pub-venue">Mathematical Biosciences and Engineering, 16(6), 2019.</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">04</div>
+        <div class="pub-text"><strong>Liu T., Porter J., Wang N., Sun Z., Mo Y., Wang Z.</strong> TADKB: Family Classification and a knowledge base of topologically associating domains. <span class="pub-venue">BMC Genomics 20, 2019.</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">05</div>
+        <div class="pub-text"><strong>Wang Z., Zhao C., Wang Y., Sun Z., Wang N.</strong> PANDA: Protein function prediction using domain architecture and affinity propagation. <span class="pub-venue">Scientific Reports, 2018.</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">06</div>
+        <div class="pub-text"><strong>Akogwu I., Wang N., Zhang C., Gong P.</strong> A comparative study of k-spectrum-based error correction methods for next-generation sequencing data analysis. <span class="pub-venue">Human Genomics, 2016.</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">07</div>
+        <div class="pub-text"><strong>Peng Y., Maxwell A.S., Barker N.D., Laird J.G., Kennedy A.J., Wang N., Zhang C., Gong P.</strong> SeqAssist: A novel toolkit for preliminary analysis of next-generation sequencing data. <span class="pub-venue">BMC Bioinformatics, 2014.</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">08</div>
+        <div class="pub-text"><strong>Li P., Gong P., Li H., Perkins E.J., Wang N., Zhang C.</strong> Gene regulatory network inference and validation using relative change ratio analysis and time-delayed dynamic Bayesian network. <span class="pub-venue">EURASIP Journal on Bioinformatics and Systems Biology, 2014.</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">09</div>
+        <div class="pub-text"><strong>Sanders W.S., Wang N., et al.</strong> The proteogenomic mapping tool. <span class="pub-venue">BMC Bioinformatics, 12:115, 2011.</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">10</div>
+        <div class="pub-text"><strong>Li H., Wang N., Gong P., Perkins E.J., Zhang C.</strong> Learning the structure of gene regulatory networks from time series gene expression data. <span class="pub-venue">BMC Genomics, 12(S5):S13, 2011.</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">11</div>
+        <div class="pub-text"><strong>Gong P., Loh P.R., Barker N.D., …Wang N., Zhang C., Perkins E.J.</strong> Building quantitative prediction models for tissue residue of two explosives compounds in earthworms. <span class="pub-venue">Environ. Sci. Technol., 46(1):19–26, 2012.</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">12</div>
+        <div class="pub-text"><strong>McCarthy F., Bridges S., Wang N., et al.</strong> AgBase: A unified resource for functional analysis in agriculture. <span class="pub-venue">Nucleic Acids Research, 35:D599–603, 2007.</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">13</div>
+        <div class="pub-text"><strong>Buza T.J., McCarthy F.M., Wang N., Bridges S.M., Burgess S.C.</strong> Gene Ontology annotation quality analysis in model eukaryotes. <span class="pub-venue">Nucleic Acids Res., 36(2):e12, 2008.</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">14</div>
+        <div class="pub-text"><strong>Bridges S.M., Magee G.B., Wang N., et al.</strong> ProtQuant: A Tool for the Label-Free Quantification of MudPIT Proteomics Data. <span class="pub-venue">BMC Bioinformatics, 8(S7):S24, 2007.</span></div>
+      </div>
     </div>
-  </div>
-</section>
+
+    <div id="conferences" class="pub-list">
+      <div class="pub-item">
+        <div class="pub-num">01</div>
+        <div class="pub-text"><strong>Saghiri A.M. &amp; Wang N.</strong> Self-Evolving Programs: A Novel Approach Leveraging LLMs and Quine Programs. <span class="pub-venue">ICCIMS 2024, Royal Military College of Canada.</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">02</div>
+        <div class="pub-text"><strong>Saghiri A.M. &amp; Wang N.</strong> Decentralized Platoon Management Based on Blockchain: A SWOT Analysis Research Perspective. <span class="pub-venue">ICCIMS 2024, Royal Military College of Canada.</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">03</div>
+        <div class="pub-text"><strong>Zha M., Wang N., Zhang C., Wang Z.</strong> Inferring Single-Cell 3D Chromosomal Structures Based on the Lennard-Jones Potential. <span class="pub-venue">RECOMB/ISCB RSGDREAM 2022.</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">04</div>
+        <div class="pub-text"><strong>Li H., Li P., Zhang C., Wang N., Gong P., Perkins E.</strong> Performance Evaluation of the Time-Delayed Dynamic Bayesian Network Approach. <span class="pub-venue">ACM BCB 2010.</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">05</div>
+        <div class="pub-text"><strong>Wang N., Burgess S., Lawrence M., Bridges S.</strong> Proteogenomic Mapping for Structural Annotation of Prokaryote Genomes. <span class="pub-venue">IJCBSB 2009.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GRANTS -->
+  <section id="grants">
+    <div class="section-label">Funding</div>
+    <h2>Awarded Grants</h2>
+    <div class="grant-grid">
+      <div class="grant-card">
+        <div class="grant-amount">$2,000,000</div>
+        <div class="grant-title">S-STEM: Math and Computer Science Scholars Program, Phase II</div>
+        <div class="grant-meta">NSF (Co-PI) · 2026–2030</div>
+      </div>
+      <div class="grant-card">
+        <div class="grant-amount">$1,000,000</div>
+        <div class="grant-title">Math and Computer Science Scholars Program</div>
+        <div class="grant-meta">NSF (Co-PI) · 2020–2025</div>
+      </div>
+      <div class="grant-card">
+        <div class="grant-amount">$718,268</div>
+        <div class="grant-title">Initiation and Persistence of Blooms of Karenia brevis in Gulf of Mexico</div>
+        <div class="grant-meta">NOAA (Co-PI) · 2011–2014</div>
+      </div>
+      <div class="grant-card">
+        <div class="grant-amount">$458,433</div>
+        <div class="grant-title">Modeling, Reconstruction, and Validation of Gene Regulatory Networks</div>
+        <div class="grant-meta">NSF (Co-PI) · 2011–2015</div>
+      </div>
+      <div class="grant-card">
+        <div class="grant-amount">$439,608</div>
+        <div class="grant-title">Bayesian Learning for Microarray Data Analysis &amp; Gene Regulatory Network Reconstruction</div>
+        <div class="grant-meta">U.S. Army ERDC (Co-PI) · 2008–2010</div>
+      </div>
+      <div class="grant-card">
+        <div class="grant-amount">$391,894</div>
+        <div class="grant-title">Arthropod Functional Genomics Initiative</div>
+        <div class="grant-meta">USAID (Co-PI) · 2010–2013</div>
+      </div>
+      <div class="grant-card">
+        <div class="grant-amount">$20,000,000</div>
+        <div class="grant-title">Modeling and Simulation of Complex Systems</div>
+        <div class="grant-meta">NSF (Senior Personnel) · 2009–2014</div>
+      </div>
+      <div class="grant-card">
+        <div class="grant-amount">$72,000</div>
+        <div class="grant-title">Cyber-based Platform for Building Gene Regulatory Networks from ESTs</div>
+        <div class="grant-meta">NSF (PI) · 2014–2016</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKS -->
+  <section id="books">
+    <div class="section-label">Authorship</div>
+    <h2>Books</h2>
+    <div class="book-shelf">
+      <div class="book-card">
+        <div class="book-icon">📘</div>
+        <h4>Blockchain for Beginners: A Project-based Approach</h4>
+        <p>Co-authored with Ali M. Saghiri. A hands-on, practical introduction to blockchain technology.</p>
+        <span class="book-status">Published 2024–2025 · Cogella</span>
+      </div>
+      <div class="book-card">
+        <div class="book-icon">🐍</div>
+        <h4>Python Basics</h4>
+        <p>Co-authored with Ali M. Saghiri. Accessible Python programming for students and practitioners.</p>
+        <span class="book-status">In Preparation · Amazon 2025</span>
+      </div>
+      <div class="book-card">
+        <div class="book-icon">📐</div>
+        <h4>Principles of Calculus: A Python-Based Framework</h4>
+        <p>Co-authored with Nan Wang, Ali Saghiri. Bridging mathematics and computational thinking through Python.</p>
+        <span class="book-status">In Preparation · Cengage 2025</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEACHING -->
+  <section id="teaching">
+    <div class="section-label">Pedagogy</div>
+    <h2>Teaching &amp; Curriculum</h2>
+    <p style="font-size:18px; color:var(--slate); margin-bottom:36px; font-weight:300;">Dr. Wang has taught over 40 distinct courses across undergraduate and graduate levels, and has spearheaded the design of an entirely new M.S. in Computer Science program at William Paterson University.</p>
+
+    <div style="display:grid; grid-template-columns: repeat(3,1fr); gap:2px; margin-bottom:32px;">
+      <div style="background:var(--cream); padding:28px;">
+        <div class="section-label" style="margin-bottom:12px;">2023 – Present · WPU</div>
+        <p style="font-size:15px; color:var(--slate); line-height:1.8;">
+          Computer Info Tech · CS I &amp; II (C++) · CS II (Java) · Hardware · Operating Systems · Database Mgmt · Information Assurance · Capstone (CS &amp; CIT) · AI for Everyone · Data Structures · Graduate Data Structures &amp; Algorithms
+        </p>
+      </div>
+      <div style="background:var(--cream); padding:28px;">
+        <div class="section-label" style="margin-bottom:12px;">2017 – 2023 · NJCU</div>
+        <p style="font-size:15px; color:var(--slate); line-height:1.8;">
+          CS I &amp; II (Java) · Game Programming · Data Structures &amp; Algorithms · Database Design · Software Engineering · Visual Programming · Data Science · Internet Multimedia · Intro to Computers
+        </p>
+      </div>
+      <div style="background:var(--cream); padding:28px;">
+        <div class="section-label" style="margin-bottom:12px;">2008 – 2017 · USM</div>
+        <p style="font-size:15px; color:var(--slate); line-height:1.8;">
+          Database Mgmt · Data Structures · Java (Intro &amp; Advanced) · Bioinformatics (Intro &amp; Advanced) · Android Programming · C++ I &amp; II · Data Handling · Analytical Models · Internet Concepts
+        </p>
+      </div>
+    </div>
+
+    <div style="background:var(--ink); color:var(--cream); padding:32px;">
+      <div class="section-label" style="color:var(--gold); margin-bottom:16px;">New Graduate Courses Developed (2023–Present)</div>
+      <p style="font-size:16px; color:rgba(245,240,232,0.75); line-height:2;">
+        CS5600 Data Structures &amp; Algorithms · CS6600 Advanced Algorithms · CS6030 Natural Language Processing · CS6040 Deep Learning · CS6080 Introduction to Bioinformatics · CS6090 Advanced Topics in Bioinformatics · CS6990 Master Capstone · CS6995 Master Internship
+      </p>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="section-label">Academic Formation</div>
+    <h2>Education</h2>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-degree">Ph.D. in Computer Science</div>
+        <div class="edu-school">Mississippi State University</div>
+        <div class="edu-year">2009</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">M.S. in Computer Engineering</div>
+        <div class="edu-school">Mississippi State University</div>
+        <div class="edu-year">2005</div>
+      </div>
+    </div>
+  </section>
+
+</main>
 
 <footer>
-  <p>© 2025 <span>Dr. Nan Wang</span> · Associate Professor of Computer Science · William Paterson University · Wayne, NJ</p>
+  <p>Nan Wang, Ph.D. · Associate Professor · Department of Computer Science · William Paterson University</p>
+  <p style="margin-top:8px;"><span>Portfolio generated 2026</span></p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  function switchPub(tab, btn) {
-    document.querySelectorAll('.pub-panel').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.pub-tab').forEach(t => t.classList.remove('active'));
-    document.getElementById('pub-' + tab).classList.add('active');
-    btn.classList.add('active');
-    document.querySelectorAll('#pub-' + tab + ' .reveal').forEach((el, i) => {
-      el.classList.remove('visible');
-      setTimeout(() => el.classList.add('visible'), i * 65);
-    });
+<script>
+  function showTab(id) {
+    document.querySelectorAll('.pub-list').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.target.classList.add('active');
   }
-  const obs = new IntersectionObserver(entries =
+
+  // Intersection observer for subtle reveal animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.area-card, .grant-card, .book-card, .edu-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(16px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
