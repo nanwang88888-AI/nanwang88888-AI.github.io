@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -526,6 +527,73 @@
 
   footer span { color: var(--gold); }
 
+  /* ── APPLY BUTTON ── */
+  .apply-btn {
+    display: inline-block;
+    margin-top: 24px;
+    padding: 13px 28px;
+    background: var(--rust);
+    color: #fff;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 2px solid var(--rust);
+    transition: background 0.25s, color 0.25s, border-color 0.25s;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.55s;
+  }
+  .apply-btn:hover {
+    background: transparent;
+    color: var(--rust);
+    border-color: var(--rust);
+  }
+
+  /* ── PROGRAM DIRECTOR BANNER ── */
+  .director-banner {
+    background: linear-gradient(135deg, var(--rust) 0%, #8b2e14 100%);
+    color: #fff;
+    padding: 28px 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+  .director-banner-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .director-icon { font-size: 36px; flex-shrink: 0; }
+  .director-banner h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: #fff;
+  }
+  .director-banner p { font-size: 15px; color: rgba(255,255,255,0.8); line-height: 1.5; }
+  .apply-btn-inline {
+    display: inline-block;
+    padding: 13px 28px;
+    background: #fff;
+    color: var(--rust);
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 500;
+    white-space: nowrap;
+    border: 2px solid #fff;
+    transition: background 0.25s, color 0.25s;
+    flex-shrink: 0;
+  }
+  .apply-btn-inline:hover { background: transparent; color: #fff; }
+
   /* ── ANIMATIONS ── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
@@ -554,13 +622,17 @@
     <div>
       <div class="header-tag">Portfolio — Academic &amp; Research</div>
       <h1>Nan <em>Wang,</em><br>Ph.D.</h1>
-      <p class="header-subtitle">Associate Professor in Computer Science · William Paterson University</p>
+      <p class="header-subtitle">Associate Professor &amp; Graduate Program Director · Department of Computer Science · William Paterson University</p>
+      <a href="https://www.wpunj.edu/cosh/departments/computer-science/ms-computer-science" target="_blank" class="apply-btn">
+        Apply to M.S. in Computer Science ↗
+      </a>
     </div>
     <div class="header-meta">
       <p>Wayne, NJ 07305</p>
       <p>Computer Science</p>
       <p>William Paterson University</p>
-      <p style="color:rgba(201,151,90,0.7); margin-top:8px;">2023 – Present</p>
+      <p style="color:rgba(201,151,90,0.7); margin-top:8px;">Graduate Program Director</p>
+      <p style="color:rgba(201,151,90,0.5);">2023 – Present</p>
     </div>
   </div>
 </header>
@@ -576,6 +648,7 @@
     <li><a href="#books">Books</a></li>
     <li><a href="#teaching">Teaching</a></li>
     <li><a href="#education">Education</a></li>
+    <li><a href="https://www.wpunj.edu/cosh/departments/computer-science/ms-computer-science" target="_blank" style="color:var(--gold); border-color:var(--gold);">Apply to M.S. ↗</a></li>
   </ul>
 </nav>
 
@@ -585,9 +658,22 @@
   <section id="about">
     <div class="section-label">Introduction</div>
     <h2>About</h2>
+
+    <!-- Graduate Program Director Banner -->
+    <div class="director-banner">
+      <div class="director-banner-left">
+        <div class="director-icon">🎓</div>
+        <div>
+          <h3>Graduate Program Director</h3>
+          <p>M.S. in Computer Science · Department of Computer Science · William Paterson University · 2023 – Present<br>Overseeing curriculum, admissions, advising, and academic standards for the graduate program.</p>
+        </div>
+      </div>
+      <a href="https://www.wpunj.edu/cosh/departments/computer-science/ms-computer-science" target="_blank" class="apply-btn-inline">Apply to M.S. in CS ↗</a>
+    </div>
+
     <div class="about-grid">
       <div class="about-text">
-        <p>Dr. Nan Wang is an <strong>Associate Professor of Computer Science</strong> at William Paterson University with over two decades of academic and research experience spanning computational biology, bioinformatics, machine learning, blockchain technology, and generative AI.</p>
+        <p>Dr. Nan Wang is an <strong>Associate Professor of Computer Science</strong> and <strong>Graduate Program Director</strong> at William Paterson University with over two decades of academic and research experience spanning computational biology, bioinformatics, machine learning, blockchain technology, and generative AI.</p>
         <p>Her interdisciplinary work bridges <strong>data science and life sciences</strong>, with publications in leading venues including Nature Scientific Reports, BMC Genomics, and Nucleic Acids Research. She is passionate about developing the next generation of computer scientists through innovative curriculum design and mentorship.</p>
         <p>Dr. Wang has secured over <strong>$22 million in funded research grants</strong> from agencies including NSF, USDA, NOAA, and USAID, and has recently co-authored a textbook on Blockchain with a Python programming book in preparation.</p>
       </div>
