@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2026 Fall AI Agent Hackathon — William Paterson University</title>
+<meta name="description" content="Design, build, and demo autonomous AI agents. Presentations Wednesday, December 2, 2026, 12:30–3:30 PM. Hosted by the WP Computer Science Department.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --ink:#141414;
+  --paper:#f7f4ee;
+  --card:#fffdf8;
+  --orange:#ec6b24;
+  --orange-deep:#9a4414;
+  --muted:#4a443e;
+  --on-dark-muted:#d6d0c7;
+  --line:#141414;
+  --display:'Bricolage Grotesque','Arial Black',system-ui,sans-serif;
+  --body:'IBM Plex Sans','Helvetica Neue',Helvetica,system-ui,sans-serif;
+  --wrap:1120px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img,svg{max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--display);margin:0;line-height:1.05;letter-spacing:-0.02em;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+
+/* Nav */
+.nav{background:var(--ink);color:var(--paper);position:sticky;top:0;z-index:10;border-bottom:1px solid #2c2926}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px}
+.brand{font-family:var(--display);font-weight:800;font-size:18px;text-decoration:none}
+.brand span{color:var(--orange)}
+.nav-links{display:flex;align-items:center;gap:22px;font-size:15px}
+.nav-links a{text-decoration:none;color:var(--on-dark-muted)}
+.nav-links a:hover{color:var(--paper)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 22px;border-radius:999px;font-weight:600;font-size:16px;text-decoration:none;border:2px solid transparent;transition:background .15s,color .15s}
+.btn-primary{background:var(--orange);color:var(--ink)}
+.btn-primary:hover{background:#ff7d35}
+.btn-ghost{border-color:#6b645c;color:var(--paper)}
+.btn-ghost:hover{border-color:var(--paper)}
+.nav .btn{min-height:40px;padding:0 16px;font-size:15px}
+
+/* Hero */
+.hero{background:var(--ink);color:var(--paper);padding:72px 0 88px}
+.hero .wrap{display:grid;grid-template-columns:1.25fr 1fr;gap:48px;align-items:center}
+.kicker{color:var(--on-dark-muted);font-size:16px;margin-bottom:18px}
+.hero h1{font-size:clamp(48px,7.2vw,92px);font-weight:800;letter-spacing:-0.035em;line-height:0.95}
+.hero h1 .season{display:block;color:var(--orange)}
+.lede{margin-top:22px;font-size:19px;color:var(--on-dark-muted);max-width:34em}
+.facts{display:flex;flex-wrap:wrap;gap:10px;margin:28px 0 0;padding:0;list-style:none}
+.facts li{display:flex;align-items:center;gap:8px;padding:9px 16px;border:1.5px solid #6b645c;border-radius:999px;font-weight:500;font-size:15px}
+.facts svg{flex:0 0 18px;stroke:var(--orange)}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.welcome{display:inline-block;margin-top:26px;padding:8px 14px;background:var(--orange);color:var(--ink);border-radius:4px;font-weight:600;font-size:15px}
+
+/* Agent loop */
+.loop{width:100%;max-width:420px;justify-self:center}
+.loop .ring{stroke:#6b645c}
+.loop .node{fill:var(--orange);stroke:var(--paper);stroke-width:2}
+.loop text{font-family:var(--body);font-weight:600;font-size:15px;fill:var(--paper)}
+.loop .core{fill:var(--paper)}
+.loop .core-label{fill:var(--ink);font-family:var(--display);font-weight:800;font-size:18px}
+.loop .pulse{fill:var(--orange);offset-path:path('M210 80 A130 130 0 1 1 209.9 80');animation:travel 8s linear infinite}
+@keyframes travel{from{offset-distance:0%}to{offset-distance:100%}}
+@media (prefers-reduced-motion:reduce){.loop .pulse{animation:none;display:none}html{scroll-behavior:auto}}
+
+/* Sections */
+section{padding:88px 0}
+.section-head{display:flex;flex-direction:column;gap:10px;margin-bottom:40px;max-width:40em}
+.section-head .tag{color:var(--orange-deep);font-weight:600;font-size:16px}
+.section-head h2{font-size:clamp(34px,4.6vw,52px);font-weight:800}
+.section-head p{color:var(--muted);font-size:18px}
+
+/* Schedule */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;list-style:none;margin:0;padding:0;counter-reset:step}
+.step{background:var(--card);border:2px solid var(--line);border-radius:8px;padding:26px 24px;display:flex;flex-direction:column;gap:10px}
+.step .num{font-family:var(--display);font-weight:800;font-size:40px;line-height:1;color:var(--orange-deep)}
+.step h3{font-size:24px;font-weight:800}
+.step .when{font-weight:600}
+.step p{color:var(--muted)}
+.step.finale{background:var(--orange)}
+.step.finale .num{color:var(--ink)}
+.step.finale p{color:var(--ink)}
+
+/* Perks */
+.perks-bg{background:var(--card);border-top:2px solid var(--line);border-bottom:2px solid var(--line)}
+.perks{display:grid;grid-template-columns:repeat(3,1fr);gap:36px 40px;list-style:none;margin:0;padding:0}
+.perk{display:grid;grid-template-columns:40px 1fr;gap:14px;align-items:start}
+.perk svg{width:36px;height:36px;stroke:var(--ink)}
+.perk h3{font-size:20px;font-weight:600;font-family:var(--body);letter-spacing:0;margin-bottom:4px}
+.perk p{color:var(--muted);font-size:16px}
+
+/* Register */
+.register{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;background:var(--ink);color:var(--paper);border-radius:10px;padding:48px}
+.register h2{font-size:clamp(32px,4.2vw,48px);font-weight:800}
+.register p{color:var(--on-dark-muted);margin-top:12px;max-width:32em}
+.register .cta-row{margin-top:24px}
+.qr{width:168px;height:168px;background:var(--paper);color:var(--ink);border-radius:8px;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:600;font-size:14px;padding:12px;border:3px dashed var(--orange)}
+.coordinator{display:flex;align-items:center;gap:16px;margin-top:40px}
+.avatar{width:56px;height:56px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:800;font-size:20px;flex:0 0 56px}
+.coordinator strong{display:block;font-size:18px}
+.coordinator span{color:var(--muted)}
+
+/* Footer */
+footer{border-top:2px solid var(--line);padding:36px 0 48px;font-size:15px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap}
+footer strong{color:var(--ink)}
+.small{margin-top:18px;font-size:14px}
+
+@media (max-width:900px){
+  .hero .wrap{grid-template-columns:1fr}
+  .loop{max-width:320px}
+  .steps,.perks{grid-template-columns:1fr}
+  .register{grid-template-columns:1fr;padding:32px 24px}
+  .nav-links a:not(.btn){display:none}
+  section{padding:64px 0}
+  .hero{padding:48px 0 64px}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">WP <span>CS</span> Department</a>
+    <nav class="nav-links" aria-label="Page sections">
+      <a href="#schedule">Schedule</a>
+      <a href="#perks">Details</a>
+      <a href="#register">Register</a>
+      <a class="btn btn-primary" href="[REGISTRATION LINK]">Register now</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" aria-labelledby="title">
+    <div class="wrap">
+      <div>
+        <p class="kicker">Computer Science Department, William Paterson University</p>
+        <h1 id="title"><span class="season">2026 Fall</span>AI Agent Hackathon</h1>
+        <p class="lede">Design, build, and demo autonomous AI agents that plan, use tools, and take action. Training provided, no prior AI experience required.</p>
+        <ul class="facts">
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Presentations: Wednesday, December 2, 2026</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>12:30 – 3:30 PM</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>[ROOM], William Paterson University</li>
+        </ul>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="[REGISTRATION LINK]">Register now</a>
+          <a class="btn btn-ghost" href="#schedule">View schedule</a>
+        </div>
+        <p class="welcome">Open to all majors. Everyone is welcome!</p>
+      </div>
+
+      <svg class="loop" viewBox="0 0 420 420" role="img" aria-label="An AI agent works in a loop: perceive, plan, act, observe.">
+        <circle class="ring" cx="210" cy="210" r="130" fill="none" stroke-width="2" stroke-dasharray="7 8"/>
+        <circle class="pulse" r="6"/>
+        <circle class="core" cx="210" cy="210" r="54"/>
+        <text class="core-label" x="210" y="216" text-anchor="middle">Agent</text>
+        <circle class="node" cx="210" cy="80" r="12"/>
+        <text x="210" y="52" text-anchor="middle">Perceive</text>
+        <circle class="node" cx="340" cy="210" r="12"/>
+        <text x="362" y="180" text-anchor="middle">Plan</text>
+        <circle class="node" cx="210" cy="340" r="12"/>
+        <text x="210" y="380" text-anchor="middle">Act</text>
+        <circle class="node" cx="80" cy="210" r="12"/>
+        <text x="60" y="180" text-anchor="middle">Observe</text>
+      </svg>
+    </div>
+  </section>
+
+  <section id="schedule" aria-labelledby="schedule-title">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="tag">Schedule</span>
+        <h2 id="schedule-title">Learn, build, then demo</h2>
+        <p>Three stages take you from your first agent to a live presentation in front of the judges.</p>
+      </div>
+      <ol class="steps">
+        <li class="step">
+          <span class="num">1</span>
+          <h3>Agent training workshop</h3>
+          <span class="when">[DATE, TIME] · [ROOM]</span>
+          <p>A hands-on introduction to AI agents, tool use, and LLM APIs. No prior experience needed.</p>
+        </li>
+        <li class="step">
+          <span class="num">2</span>
+          <h3>Build &amp; hack</h3>
+          <span class="when">[START DATE] – December 1</span>
+          <p>Form a team and build your AI agent, with mentors available for support.</p>
+        </li>
+        <li class="step finale">
+          <span class="num">3</span>
+          <h3>Presentations &amp; awards</h3>
+          <span class="when">Wednesday, December 2 · 12:30 – 3:30 PM</span>
+          <p>Demo your agent to the judges. Winners are announced and prizes awarded.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="perks" class="perks-bg" aria-labelledby="perks-title">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="tag">What you get</span>
+        <h2 id="perks-title">Everything you need to build</h2>
+      </div>
+      <ul class="perks">
+        <li class="perk">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3"/></svg>
+          <div><h3>Free API access</h3><p>Every participant receives API access for building and testing their agent.</p></div>
+        </li>
+        <li class="perk">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg>
+          <div><h3>Pre-hackathon training</h3><p>Learn agent fundamentals and API usage before you start building.</p></div>
+        </li>
+        <li class="perk">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5c5-3 11-3 16 0L12 21z"/><circle cx="10" cy="9" r="1"/><circle cx="14" cy="12" r="1"/></svg>
+          <div><h3>Free food</h3><p>Food is provided so you can stay focused on building.</p></div>
+        </li>
+        <li class="perk">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8 20h8"/></svg>
+          <div><h3>Prizes &amp; awards</h3><p>Compete for awards presented at the December 2 presentations.</p></div>
+        </li>
+        <li class="perk">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>
+          <div><h3>All majors welcome</h3><p>Whether you study CS, business, art, or biology, you're invited to build.</p></div>
+        </li>
+        <li class="perk">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-4 3-6 6-6s6 2 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14c3 0 5 2 5 5"/></svg>
+          <div><h3>Mentorship</h3><p>Get guidance from faculty and industry mentors throughout the event.</p></div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="register" aria-labelledby="register-title">
+    <div class="wrap">
+      <div class="register">
+        <div>
+          <h2 id="register-title">Ready to build the future with AI agents?</h2>
+          <p>Register now to secure your spot. Space is limited. Open to all WP students regardless of major or experience level.</p>
+          <div class="cta-row"><a class="btn btn-primary" href="[REGISTRATION LINK]">Register here</a></div>
+        </div>
+        <div class="qr" role="img" aria-label="Registration QR code placeholder">[QR CODE]</div>
+      </div>
+      <div class="coordinator">
+        <div class="avatar" aria-hidden="true">NW</div>
+        <div><strong>Dr. Nan Wang</strong><span>Event Coordinator, Computer Science Department</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <strong>2026 Fall AI Agent Hackathon</strong><br>
+      Hosted by the Department of Computer Science<br>
+      William Paterson University of New Jersey, Wayne, NJ
+    </div>
+    <div>
+      This event is partially sponsored by <strong>NSF Grant #2527737</strong><br>
+      through the <a href="https://www.wpunj.edu/cosh/macs-scholars-program/">MaCS Scholars Program</a>.<br>
+      Thank you to the National Science Foundation for supporting this initiative.
+      <p class="small">© 2026 William Paterson University. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
